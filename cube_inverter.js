@@ -30,6 +30,7 @@
                         cubeInverterAction = new Action("cube_inverter_action", {
                                 name: "Invert Cubes",
                                 icon: icon,
+                                description: "Invert the values of all axes of selected cubes.",
                                 condition: () => Cube.selected.length,
                                 click: () => invertCubes()
                         })
