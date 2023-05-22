@@ -1,3 +1,11 @@
+/*
+To do:
+- Fix UVs of inverted cubes
+- Populate about dialog
+- Fix some incomplete plugin meta fields
+- Finalize icon
+*/
+
 (async function() {
         let aboutAction, cubeInverterAction
         const id = "cube_inverter"
