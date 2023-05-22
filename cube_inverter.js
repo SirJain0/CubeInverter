@@ -46,6 +46,7 @@ To do:
                         aboutAction.delete()
                         cubeInverterAction.delete()
                         MenuBar.removeAction(`help.about_plugins.about_${id}`)
+                        Blockbench.showQuickMessage("Uninstalled Cube Inverter plugin")
                 }
         })
 
