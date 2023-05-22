@@ -1,9 +1,7 @@
 /*
 To do:
 - Fix UVs of inverted cubes
-- Fix some incomplete plugin meta fields
 - Finalize icon
-- Add keybinding to action
 */
 
 (async function() {
@@ -26,8 +24,7 @@ To do:
                 icon,
                 author,
                 description: "Adds a button that inverts selected cube sizes.",
-                about: "To do",
-                tags: ["To do"],
+                about: "This plugin adds a button that inverts the size values of each selected cube.\n## How to use\nTo use this plugin, go to the size values of the cube (located in edit mode) and click the `Invert Cubes` button located next to the Inflation value. The button is also keybinded with a default of `Shift + I`. You can add or remove the tool using the `Customize Toolbar` option.\n\nPlease report any bugs or suggestions you may have.",
                 version: "1.0.0",
                 min_version: "4.2.0",
                 variant: "both",
