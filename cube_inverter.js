@@ -30,7 +30,7 @@
                         cubeInverterAction = new Action("cube_inverter_action", {
                                 name: "Invert Cubes",
                                 icon: icon,
-                                click: () => console.log("Cube Inverter Tool Clicked!")
+                                click: () => invertCubes()
                         })
 
                         Toolbars.element_origin.add(cubeInverterAction)
@@ -41,6 +41,21 @@
                         MenuBar.removeAction(`help.about_plugins.about_${id}`)
                 }
         })
+
+        function invertCubes() {
+                if (Cube.selected.length === 0) {
+                        Blockbench.showMessageBox({
+                                title: "No cubes selected!",
+                                message: "You need to select cubes to use this action."
+                        })
+                } else {
+                        for (const cube of Cube.selected) {
+                                cube.size(0) = -cube.size(0);
+                                cube.size(1) = -cube.size(1);
+                                cube.size(2) = -cube.size(2);
+                        }
+                }
+        }
 
         function addAbout() {
                 let about = MenuBar.menus.help.structure.find(e => e.id === "about_plugins")
