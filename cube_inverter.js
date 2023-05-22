@@ -39,6 +39,7 @@ To do:
                                 name: "Invert Cubes",
                                 icon: icon,
                                 description: "Invert the values of all axes of selected cubes.",
+                                keybind: new Keybind({key: 'i', shift: true}),
                                 condition: () => Cube.selected.length,
                                 click: () => invertCubes()
                         })
