@@ -44,11 +44,14 @@
         })
 
         function invertCubes() {
+                Undo.initEdit({elements: Cube.selected, outliner: true});
+
                 for (const cube of Cube.selected) {
                         [cube.from, cube.to] = [cube.to, cube.from]
                 }
 
-                Canvas.updateElements()
+                // Canvas.updateElements()
+                Undo.finishEdit('Inverted cube values', {elements: Cube.selected, outliner: true});
         }
 
         function addAbout() {
