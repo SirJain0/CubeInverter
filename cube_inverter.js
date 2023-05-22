@@ -1,27 +1,39 @@
 (async function() {
-        let aboutAction
-        const id = "template"
-        const name = "Template"
-        const icon = "extension"
-        const author = "Author Name"
+        let aboutAction, cubeInverterAction
+        const id = "cube_inverter"
+        const name = "Cube Inverter"
+        const icon = "invert_colors"
+        const author = "SirJain"
+
+        // Used for about dialog
         const links = {
                 website: "https://google.com/",
+                twitter: "https://twitter.com/SirJain2",
                 discord: "https://discord.com/"
         }
 
+        // Registers plugin data
         Plugin.register(id, {
                 title: name,
                 icon,
                 author,
-                description: "placeholder",
-                about: "placeholder",
-                tags: ["placeholder"],
+                description: "Adds a button that inverts selected cube sizes.",
+                about: "To do",
+                tags: ["To do"],
                 version: "1.0.0",
                 min_version: "4.2.0",
                 variant: "both",
                 oninstall: () => showAbout(true),
                 onload() {
                         addAbout()
+
+                        cubeInverterAction = new Action("cube_inverter_action", {
+                                name: "Invert Cubes",
+                                icon: icon,
+                                click: () => console.log("Cube Inverter Tool Clicked!")
+                        })
+
+                        Toolbars.element_origin.add(cubeInverterAction)
                 },
                 onunload() {
                         aboutAction.delete()
