@@ -33,7 +33,7 @@
                                 click: () => invertCubes()
                         })
 
-                        Toolbars.element_origin.add(cubeInverterAction)
+                        Toolbars.element_size.add(cubeInverterAction)
                 },
                 onunload() {
                         aboutAction.delete()
