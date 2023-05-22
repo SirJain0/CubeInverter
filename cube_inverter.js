@@ -7,7 +7,7 @@ To do:
         let aboutAction, cubeInverterAction
         const id = "cube_inverter"
         const name = "Cube Inverter"
-        const icon = "all_out"
+        const icon = "swap_horiz"
         const author = "SirJain"
 
         // Used for about dialog
