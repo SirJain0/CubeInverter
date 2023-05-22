@@ -50,7 +50,7 @@
                         [cube.from, cube.to] = [cube.to, cube.from]
                 }
 
-                // Canvas.updateElements()
+                Canvas.updateAll()
                 Undo.finishEdit('Inverted cube values', {elements: Cube.selected, outliner: true});
         }
 
