@@ -1,14 +1,13 @@
 /*
 To do:
 - Fix UVs of inverted cubes
-- Finalize icon
 */
 
 (async function() {
         let aboutAction, cubeInverterAction
         const id = "cube_inverter"
         const name = "Cube Inverter"
-        const icon = "invert_colors"
+        const icon = "all_out"
         const author = "SirJain"
 
         // Used for about dialog
