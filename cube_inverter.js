@@ -30,6 +30,7 @@
                         cubeInverterAction = new Action("cube_inverter_action", {
                                 name: "Invert Cubes",
                                 icon: icon,
+                                condition: () => Cube.selected.length,
                                 click: () => invertCubes()
                         })
 
@@ -43,18 +44,11 @@
         })
 
         function invertCubes() {
-                if (Cube.selected.length === 0) {
-                        Blockbench.showMessageBox({
-                                title: "No cubes selected!",
-                                message: "You need to select cubes to use this action."
-                        })
-                } else {
-                        for (const cube of Cube.selected) {
-                                cube.size(0) = -cube.size(0);
-                                cube.size(1) = -cube.size(1);
-                                cube.size(2) = -cube.size(2);
-                        }
+                for (const cube of Cube.selected) {
+                        [cube.from, cube.to] = [cube.to, cube.from]
                 }
+
+                Canvas.updateElements()
         }
 
         function addAbout() {
