@@ -55,14 +55,22 @@ To do:
 
                 for (const cube of Cube.selected) {
                         [cube.from, cube.to] = [cube.to, cube.from]
+
+                        // UV handling
+                        [cube.faces.down.uv, cube.faces.up.uv] = [cube.faces.up.uv, cube.faces.down.uv]
+                        [cube.faces.west.uv, cube.faces.east.uv] = [cube.faces.east.uv, cube.faces.west.uv]
+                        [cube.faces.north.uv, cube.faces.south.uv] = [cube.faces.south.uv, cube.faces.north.uv]
+
+                        Canvas.updateAllFaces()
                 }
 
                 Canvas.updateAll()
-                Undo.finishEdit('Inverted cube values', {elements: Cube.selected, outliner: true});
+                Undo.finishEdit("Inverted cube values", {elements: Cube.selected, outliner: true});
         }
 
         function addAbout() {
                 let about = MenuBar.menus.help.structure.find(e => e.id === "about_plugins")
+
                 if (!about) {
                         about = new Action("about_plugins", {
                                 name: "About Plugins...",
@@ -71,11 +79,13 @@ To do:
                         })
                         MenuBar.addAction(about, "help")
                 }
+
                 aboutAction = new Action(`about_${id}`, {
                         name: `About ${name}...`,
                         icon,
                         click: () => showAbout()
                 })
+                
                 about.children.push(aboutAction)
         }
 
