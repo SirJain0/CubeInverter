@@ -1,8 +1,3 @@
-/*
-To do:
-- Fix UVs of inverted cubes
-*/
-
 (async function() {
         let aboutAction, cubeInverterAction
         const id = "cube_inverter"
@@ -54,15 +49,46 @@ To do:
                 Undo.initEdit({elements: Cube.selected, outliner: true});
 
                 for (const cube of Cube.selected) {
+
+                        // Handles size dimensions
                         [cube.from, cube.to] = [cube.to, cube.from]
+
+                        // UV handling
+                        cube.faces.north.uv = cube.faces.south.uv
+                        cube.faces.south.uv = cube.faces.north.uv
+                        cube.faces.north.texture = cube.faces.south.texture 
+                        cube.faces.south.texture = cube.faces.north.texture
+                        cube.faces.north.cullface = cube.faces.south.cullface 
+                        cube.faces.south.cullface = cube.faces.north.cullface
+                        cube.faces.north.rotation += 180
+                        cube.faces.south.rotation += 180
+
+                        cube.faces.east.uv = cube.faces.west.uv
+                        cube.faces.west.uv = cube.faces.east.uv
+                        cube.faces.east.texture = cube.faces.west.texture 
+                        cube.faces.west.texture = cube.faces.east.texture
+                        cube.faces.east.cullface = cube.faces.west.cullface 
+                        cube.faces.west.cullface = cube.faces.east.cullface
+                        cube.faces.east.rotation += 180
+                        cube.faces.west.rotation += 180
+
+                        cube.faces.up.uv = cube.faces.down.uv
+                        cube.faces.down.uv = cube.faces.up.uv
+                        cube.faces.up.texture = cube.faces.down.texture 
+                        cube.faces.down.texture = cube.faces.up.texture
+                        cube.faces.up.cullface = cube.faces.down.cullface 
+                        cube.faces.down.cullface = cube.faces.up.cullface
+                        cube.faces.up.rotation += 180
+                        cube.faces.down.rotation += 180
                 }
 
                 Canvas.updateAll()
-                Undo.finishEdit('Inverted cube values', {elements: Cube.selected, outliner: true});
+                Undo.finishEdit("Inverted cube values", {elements: Cube.selected, outliner: true});
         }
 
         function addAbout() {
                 let about = MenuBar.menus.help.structure.find(e => e.id === "about_plugins")
+
                 if (!about) {
                         about = new Action("about_plugins", {
                                 name: "About Plugins...",
@@ -71,11 +97,13 @@ To do:
                         })
                         MenuBar.addAction(about, "help")
                 }
+
                 aboutAction = new Action(`about_${id}`, {
                         name: `About ${name}...`,
                         icon,
                         click: () => showAbout()
                 })
+
                 about.children.push(aboutAction)
         }
 
