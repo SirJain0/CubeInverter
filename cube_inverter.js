@@ -54,12 +54,28 @@ To do:
                 Undo.initEdit({elements: Cube.selected, outliner: true});
 
                 for (const cube of Cube.selected) {
-                        [cube.from, cube.to] = [cube.to, cube.from]
 
                         // UV handling
-                        [cube.faces.down.uv, cube.faces.up.uv] = [cube.faces.up.uv, cube.faces.down.uv]
-                        [cube.faces.west.uv, cube.faces.east.uv] = [cube.faces.east.uv, cube.faces.west.uv]
                         [cube.faces.north.uv, cube.faces.south.uv] = [cube.faces.south.uv, cube.faces.north.uv]
+                        [cube.faces.north.texture, cube.faces.south.texture] = [cube.faces.south.texture, cube.faces.north.texture]
+                        [cube.faces.north.cullface, cube.faces.south.cullface] = [cube.faces.south.cullface, cube.faces.north.cullface]
+                        cube.faces.north.rotation += 180
+                        cube.faces.south.rotation += 180
+
+                        [cube.faces.east.uv, cube.faces.west.uv] = [cube.faces.west.uv, cube.faces.east.uv]
+                        [cube.faces.east.texture, cube.faces.west.texture] = [cube.faces.west.texture, cube.faces.east.texture]
+                        [cube.faces.east.cullface, cube.faces.west.cullface] = [cube.faces.west.cullface, cube.faces.east.cullface]
+                        cube.faces.east.rotation += 180
+                        cube.faces.west.rotation += 180
+
+                        [cube.faces.down.uv, cube.faces.up.uv] = [cube.faces.up.uv, cube.faces.down.uv]
+                        [cube.faces.down.texture, cube.faces.up.texture] = [cube.faces.up.texture, cube.faces.down.texture]
+                        cube.faces.up.rotation += 180
+                        cube.faces.down.rotation += 180
+                        [cube.faces.down.cullface, cube.faces.up.cullface] = [cube.faces.up.cullface, cube.faces.down.cullface]
+
+                        // Handles size dimensions
+                        [cube.from, cube.to] = [cube.to, cube.from]
 
                         Canvas.updateAllFaces()
                 }
@@ -85,7 +101,7 @@ To do:
                         icon,
                         click: () => showAbout()
                 })
-                
+
                 about.children.push(aboutAction)
         }
 
