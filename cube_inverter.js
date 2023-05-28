@@ -1,8 +1,3 @@
-/*
-To do:
-- Fix UVs of inverted cubes
-*/
-
 (async function() {
         let aboutAction, cubeInverterAction
         const id = "cube_inverter"
@@ -62,7 +57,7 @@ To do:
                         cube.faces.north.uv = cube.faces.south.uv
                         cube.faces.south.uv = cube.faces.north.uv
                         cube.faces.north.texture = cube.faces.south.texture 
-                        cube.faces.south.texture =  cube.faces.north.texture
+                        cube.faces.south.texture = cube.faces.north.texture
                         cube.faces.north.cullface = cube.faces.south.cullface 
                         cube.faces.south.cullface = cube.faces.north.cullface
                         cube.faces.north.rotation += 180
@@ -71,7 +66,7 @@ To do:
                         cube.faces.east.uv = cube.faces.west.uv
                         cube.faces.west.uv = cube.faces.east.uv
                         cube.faces.east.texture = cube.faces.west.texture 
-                        cube.faces.west.texture =  cube.faces.east.texture
+                        cube.faces.west.texture = cube.faces.east.texture
                         cube.faces.east.cullface = cube.faces.west.cullface 
                         cube.faces.west.cullface = cube.faces.east.cullface
                         cube.faces.east.rotation += 180
@@ -80,7 +75,7 @@ To do:
                         cube.faces.up.uv = cube.faces.down.uv
                         cube.faces.down.uv = cube.faces.up.uv
                         cube.faces.up.texture = cube.faces.down.texture 
-                        cube.faces.down.texture =  cube.faces.up.texture
+                        cube.faces.down.texture = cube.faces.up.texture
                         cube.faces.up.cullface = cube.faces.down.cullface 
                         cube.faces.down.cullface = cube.faces.up.cullface
                         cube.faces.up.rotation += 180
