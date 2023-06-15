@@ -18,7 +18,7 @@
                 icon,
                 author,
                 description: "Adds a button that inverts selected cube sizes.",
-                about: "This plugin adds a button that inverts the size values of each selected cube.\n## How to use\nTo use this plugin, go to the `Tools` tab at the top of the screen and click the `Invert Cubes` button. The button is also keybinded with a default of `Shift + I`.\n\nPlease report any bugs or suggestions you may have.",
+                about: "This plugin adds a button that inverts the size values of each selected cube.\n## How to use\nTo use this plugin, go to the toolbar at the top of the screen (the one with the move, resize, and rotation tools) and click the `Invert Cubes` button. If you don't see the button, make sure to select some cubes. The button is also keybinded with a default of `Shift + I`.\n\nPlease report any bugs or suggestions you may have.",
                 version: "1.0.0",
                 min_version: "4.2.0",
                 variant: "both",
@@ -35,7 +35,7 @@
                                 click: () => invertCubes()
                         })
 
-                        MenuBar.addAction(cubeInverterAction, "tools");
+                        Toolbars.main_tools.add(cubeInverterAction);
                 },
                 onunload() {
                         aboutAction.delete()
@@ -60,8 +60,8 @@
                         cube.faces.south.texture = cube.faces.north.texture
                         cube.faces.north.cullface = cube.faces.south.cullface 
                         cube.faces.south.cullface = cube.faces.north.cullface
-                        cube.faces.north.rotation += (cube.faces.north.rotation + 180) % 360
-                        cube.faces.south.rotation += (cube.faces.south.rotation + 180) % 360
+                        cube.faces.north.rotation = (cube.faces.north.rotation + 180) % 360
+                        cube.faces.south.rotation = (cube.faces.south.rotation + 180) % 360
 
                         cube.faces.east.uv = cube.faces.west.uv
                         cube.faces.west.uv = cube.faces.east.uv
@@ -69,8 +69,8 @@
                         cube.faces.west.texture = cube.faces.east.texture
                         cube.faces.east.cullface = cube.faces.west.cullface 
                         cube.faces.west.cullface = cube.faces.east.cullface
-                        cube.faces.east.rotation += (cube.faces.east.rotation + 180) % 360
-                        cube.faces.west.rotation += (cube.faces.west.rotation + 180) % 360
+                        cube.faces.east.rotation = (cube.faces.east.rotation + 180) % 360
+                        cube.faces.west.rotation = (cube.faces.west.rotation + 180) % 360
 
                         cube.faces.up.uv = cube.faces.down.uv
                         cube.faces.down.uv = cube.faces.up.uv
@@ -78,8 +78,8 @@
                         cube.faces.down.texture = cube.faces.up.texture
                         cube.faces.up.cullface = cube.faces.down.cullface 
                         cube.faces.down.cullface = cube.faces.up.cullface
-                        cube.faces.up.rotation += (cube.faces.up.rotation + 180) % 360
-                        cube.faces.down.rotation += (cube.faces.down.rotation + 180) % 360
+                        cube.faces.up.rotation = (cube.faces.up.rotation + 180) % 360
+                        cube.faces.down.rotation = (cube.faces.down.rotation + 180) % 360
                 }
 
                 Canvas.updateView({
